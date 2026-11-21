@@ -1,0 +1,3 @@
+NAME="mmcblk0" SIZE="31914983424" TYPE="disk" PKNAME=""
+NAME="mmcblk0p1" SIZE="268435456" TYPE="part" PKNAME="mmcblk0"
+NAME="mmcblk0p2" SIZE="3959422976" TYPE="part" PKNAME="mmcblk0"

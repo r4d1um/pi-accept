@@ -1,0 +1,2 @@
+global
+country GB: DFS-ETSI

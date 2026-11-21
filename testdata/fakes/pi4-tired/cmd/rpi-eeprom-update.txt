@@ -1,0 +1,4 @@
+*** UPDATE AVAILABLE ***
+BOOTLOADER: update available
+   CURRENT: Thu 3 Sep 2020
+    LATEST: Mon 13 Oct 2025

@@ -1,0 +1,5 @@
+# For more options see config.txt docs
+dtparam=audio=on
+dtparam=i2c_arm=on
+camera_auto_detect=1
+[all]

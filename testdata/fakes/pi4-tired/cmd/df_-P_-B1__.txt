@@ -1,0 +1,2 @@
+Filesystem 1-blocks Used Available Capacity Mounted on
+/dev/mmcblk0p2 3900000000 3550000000 180000000 96% /

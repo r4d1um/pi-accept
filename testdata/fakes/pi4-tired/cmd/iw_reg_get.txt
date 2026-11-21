@@ -1,0 +1,2 @@
+global
+country 00: DFS-UNSET

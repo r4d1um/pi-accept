@@ -1,0 +1,2 @@
+dtparam=spi=on
+dtoverlay=w1-gpio,gpiopin=4

@@ -1,0 +1,2 @@
+Nov 20 08:00:01 lab-pi kernel: Booting Linux on physical CPU 0x0
+Nov 20 08:00:02 lab-pi kernel: mmc0: new ultra high speed SDR104 SDXC card at address aaaa
