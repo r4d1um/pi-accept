@@ -20,7 +20,7 @@ jobs:
     permissions:
       contents: write                     # only used by the release step on main
     steps:
-      - uses: actions/checkout@v5         # Node 24
+      - uses: actions/checkout@v7         # Node 24
       - uses: actions/setup-go@v7         # Node 24; caches the module and build cache
         with:
           go-version-file: go.mod
