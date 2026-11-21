@@ -10,6 +10,11 @@ explains every problem it finds: what it means and how to fix it.
 
 Use it on a Pi you just bought (new or used), after flashing a new SD card, or when a Pi behaves oddly.
 
+<p align="center"><img src="docs/pi5-good.png" alt="piaccept on a healthy Pi 5 (sample data): all checks pass" width="620"></p>
+
+<sub>Sample data (`--fake testdata/fakes/pi5-good`). A worn-out Pi 4 with under-voltage, SD errors and an old OS
+looks like [this](docs/pi4-tired.png): every problem comes with an explanation and a fix.</sub>
+
 ```
 exit 0 = PASS · 1 = WARN · 2 = FAIL
 report: /var/lib/piaccept/report.json and report.md (UTC)
@@ -92,7 +97,8 @@ internal/model     report types (schema)
 testdata/          mkfakes.py → fakes/<machine>
 ```
 
-Standard library only. Run `./test.sh` (gofmt, vet incl. ARMv6, unit tests, demo verdicts on the fake Pis).
+Standard library only. `tools/screenshots.sh` regenerates the pictures in `docs/` from the fake Pis.
+Run `./test.sh` (gofmt, vet incl. ARMv6, unit tests, demo verdicts on the fake Pis).
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License

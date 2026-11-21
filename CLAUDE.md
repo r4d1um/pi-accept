@@ -9,6 +9,7 @@ Tools: only Go (version from `go.mod`), standard library only, so no `tools/sess
 ## Map
 - `cmd/piaccept/` flags and main flow · `internal/probe` all I/O (Real/Fake) · `internal/checks` pure logic ·
   `internal/phases` stress/storage · `internal/ui` terminal · `internal/report` JSON/MD · `internal/model` schema
+- `tools/screenshots.sh` renders `docs/*.png` from the fakes (needs pyte, pillow, fonttools)
 - `testdata/mkfakes.py` generates `testdata/fakes/{pi5-good,pi4-tired}` (commit both)
 - `.github/workflows/ci.yml` tests, cross-builds, and releases when `VERSION` names a new tag
 

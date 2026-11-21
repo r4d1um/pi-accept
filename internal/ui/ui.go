@@ -11,7 +11,6 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"github.com/r4d1um/pi-accept/internal/checks"
 	"github.com/r4d1um/pi-accept/internal/model"
 )
 
@@ -211,7 +210,7 @@ func (u *UI) StressLine(hist []model.Sample, p float64, d time.Duration) {
 	cur := hist[len(hist)-1]
 	bar := u.bar(p, 22)
 	var sp strings.Builder
-	start := max(0, len(hist)-24)
+	start := max(0, len(hist)-16) // the whole line stays within u.Width, or \r redraws wrap and stack up
 	for _, s := range hist[start:] {
 		t := math.Max(0, math.Min(1, (s.TempC-35)/50))
 		ch := string(sparks[int(t*float64(len(sparks)-1))])
@@ -219,7 +218,17 @@ func (u *UI) StressLine(hist []model.Sample, p float64, d time.Duration) {
 	}
 	flag := u.fg(cPass, "no throttle")
 	if cur.Throttled&0xf != 0 {
-		flag = u.fg(cFail, "⚡"+strings.Join(checks.ThrottleText(cur.Throttled&0xf), ","))
+		txt := "throttled" // short name of the most important bit; the full list is in the results below
+		for _, b := range []struct {
+			bit  uint64
+			name string
+		}{{0x1, "under-voltage"}, {0x4, "throttled"}, {0x2, "freq capped"}, {0x8, "soft temp limit"}} {
+			if cur.Throttled&b.bit != 0 {
+				txt = b.name
+				break
+			}
+		}
+		flag = u.fg(cFail, "⚡ "+txt)
 	}
 	line := fmt.Sprintf("  🔥 %s %s %s %s %s %s",
 		bar, u.fg(cTitle, fmt.Sprintf("%3.0f%%", p*100)),
