@@ -2,6 +2,11 @@
 
 All notable changes. Versions follow [semver](https://semver.org); a release is made for every new `VERSION`.
 
+## v0.1.2 (2026-11-21)
+
+- Risk notice at the top of `--help` and in the README: use at your own risk, what the CPU stress and storage
+  tests do to the machine, back up first, `--quick` for read-only checks.
+
 ## v0.1.1 (2026-11-21)
 
 - The live stress line stays within the terminal width: shorter temperature sparkline, only the main throttle

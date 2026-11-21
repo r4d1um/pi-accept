@@ -41,6 +41,18 @@ chmod +x piaccept-linux-$arch && sudo mv piaccept-linux-$arch /usr/local/bin/pia
 
 Or build from source with Go ≥ 1.22: `go install github.com/r4d1um/pi-accept/cmd/piaccept@latest`
 
+## Before you run it
+
+> **Use at your own risk.** pi-accept comes without any warranty ([MIT licence](LICENSE)). By default it runs
+> two active tests:
+> - **CPU stress** (`--stress`, default 60 s): all cores at full load. The Pi gets hot and draws its maximum
+>   current; a weak power supply or poor cooling can make it throttle or crash. That is what the test is for,
+>   but run it when a crash does no harm.
+> - **Storage test** (`--storage`, default 256 MB, in `--io-dir`): writes a file and reads it back. This wears
+>   flash memory a little and can hit a failing or fake SD card hard.
+>
+> **Back up important data first.** `piaccept --quick` runs only the read-only checks.
+
 ## Usage
 
 ```sh

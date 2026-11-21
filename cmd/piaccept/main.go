@@ -25,6 +25,27 @@ import (
 
 var version = "dev" // set by -ldflags "-X main.version=…" in the release build
 
+// notice is shown at the top of --help (and in the README): what the active tests do to the machine.
+const notice = `piaccept — Raspberry Pi acceptance test
+
+Use at your own risk (MIT licence, no warranty). By default it runs two
+active tests:
+  - CPU stress (--stress, default 60s): all cores at full load. The Pi gets
+    hot and draws maximum current; a weak power supply or poor cooling can
+    make it throttle or crash.
+  - Storage test (--storage MB, default 256, in --io-dir): writes a file and
+    reads it back. This wears flash a little and can hit a failing or fake
+    SD card hard.
+Back up important data first. --quick runs the read-only checks only.
+`
+
+func usage() {
+	out := flag.CommandLine.Output()
+	fmt.Fprint(out, notice+"\n")
+	fmt.Fprintf(out, "Usage: piaccept [flags]   (exit 0 PASS, 1 WARN, 2 FAIL)\n\nFlags:\n")
+	flag.PrintDefaults()
+}
+
 func main() {
 	e := checks.DefaultExpect()
 	fake := flag.String("fake", "", "use a fake Pi directory (testdata/fakes/<name>) instead of this machine")
@@ -44,6 +65,7 @@ func main() {
 	flag.Float64Var(&e.MinReadMBs, "min-read", e.MinReadMBs, "minimum sequential read MB/s")
 	flag.Float64Var(&e.PingWarnMs, "ping-warn", e.PingWarnMs, "gateway ping warning ms")
 	showVersion := flag.Bool("version", false, "print version")
+	flag.Usage = usage
 	flag.Parse()
 	if *showVersion {
 		fmt.Println(version)
